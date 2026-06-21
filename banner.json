@@ -1,0 +1,7 @@
+[
+    { "avatar": "assets/opentelemetry.png", "name": "OpenTelemetry", "text": "cofounder" },
+    { "avatar": "assets/google.png", "name": "Google", "text": "software engineer" },
+    { "avatar": "assets/kubernetes.png", "name": "Kubernetes", "text": "sig node chair" },
+    { "avatar": "assets/containerd.png", "name": "containerd", "text": "security advisor" },
+    { "avatar": "assets/microsoft.png", "name": "Microsoft", "text": "ex engineer" }
+]

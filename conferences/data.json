@@ -1,0 +1,72 @@
+[
+    {
+        "title": "Navigating Failures in Pods with Devices: Challenges and Solutions",
+        "conference": "KubeCon + CloudNativeCon North America 2024",
+        "conferenceUrl": "https://kccncna2024.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Mrunal Patel"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "SIG-Node: Intro and Deep Dive",
+        "conference": "KubeCon + CloudNativeCon North America 2024",
+        "conferenceUrl": "https://kccncna2024.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Dawn Chen", "Mrunal Patel"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "Sidecar Containers Are Built-in to Kubernetes: What, How, and Why Now?",
+        "conference": "KubeCon + CloudNativeCon North America 2023",
+        "conferenceUrl": "https://kccncna2023.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Todd Neal"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "Kubernetes SIG Node Intro and Deep Dive",
+        "conference": "KubeCon + CloudNativeCon North America 2023",
+        "conferenceUrl": "https://kccncna2023.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Mrunal Patel"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "Kubernetes SIG Node Intro and Deep Dive",
+        "conference": "KubeCon + CloudNativeCon Europe 2023",
+        "conferenceUrl": "https://kccnceu2023.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Dawn Chen", "Derek Carr", "Mrunal Patel"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "Kubernetes SIG Node Intro And Deep Dive",
+        "conference": "KubeCon + CloudNativeCon North America 2022",
+        "conferenceUrl": "https://kccncna2022.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Dawn Chen", "Derek Carr"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    },
+    {
+        "title": "Kubernetes SIG Node Intro and Deep Dive",
+        "conference": "KubeCon + CloudNativeCon Europe 2022",
+        "conferenceUrl": "https://kccnceu2022.sched.com/",
+        "presenters": ["Sergey Kanzhelev", "Dawn Chen", "Elana Hashman", "Derek Carr"],
+        "youtubeUrl": "",
+        "presentationUrl": "",
+        "agendaDocUrl": "",
+        "presentationDocUrl": ""
+    }
+]

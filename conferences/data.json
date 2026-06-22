@@ -1,5 +1,6 @@
 [
     {
+        "date": "2024-11-14",
         "title": "Navigating Failures in Pods with Devices: Challenges and Solutions",
         "conference": "KubeCon + CloudNativeCon North America 2024",
         "conferenceUrl": "https://kccncna2024.sched.com/",
@@ -10,6 +11,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2024-11-13",
         "title": "SIG-Node: Intro and Deep Dive",
         "conference": "KubeCon + CloudNativeCon North America 2024",
         "conferenceUrl": "https://kccncna2024.sched.com/",
@@ -20,6 +22,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2023-11-09",
         "title": "Sidecar Containers Are Built-in to Kubernetes: What, How, and Why Now?",
         "conference": "KubeCon + CloudNativeCon North America 2023",
         "conferenceUrl": "https://kccncna2023.sched.com/",
@@ -30,6 +33,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2023-11-08",
         "title": "Kubernetes SIG Node Intro and Deep Dive",
         "conference": "KubeCon + CloudNativeCon North America 2023",
         "conferenceUrl": "https://kccncna2023.sched.com/",
@@ -40,6 +44,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2023-04-21",
         "title": "Kubernetes SIG Node Intro and Deep Dive",
         "conference": "KubeCon + CloudNativeCon Europe 2023",
         "conferenceUrl": "https://kccnceu2023.sched.com/",
@@ -50,6 +55,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2022-10-28",
         "title": "Kubernetes SIG Node Intro And Deep Dive",
         "conference": "KubeCon + CloudNativeCon North America 2022",
         "conferenceUrl": "https://kccncna2022.sched.com/",
@@ -60,6 +66,7 @@
         "presentationDocUrl": ""
     },
     {
+        "date": "2022-05-20",
         "title": "Kubernetes SIG Node Intro and Deep Dive",
         "conference": "KubeCon + CloudNativeCon Europe 2022",
         "conferenceUrl": "https://kccnceu2022.sched.com/",

@@ -37,7 +37,8 @@
         if (slug) {
             fetch(`posts/${slug}/post.md`)
                 .then(r => r.text())
-                .then(md => {
+                .then(raw => {
+                    const md = raw.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
                     document.getElementById('content').innerHTML = marked.parse(md);
                     const h1 = document.querySelector('#content h1');
                     if (h1) document.title = h1.textContent + ' - TIL';

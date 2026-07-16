@@ -1,5 +1,15 @@
 [
     {
+        "slug": "2026-07-16-do-you-need-a-working-group",
+        "title": "Do you need a Working Group?",
+        "date": "2026-07-16",
+        "tags": [
+            "kubernetes",
+            "governance",
+            "thinking-out-loud"
+        ]
+    },
+    {
         "slug": "2026-06-30-kubelet-local-scheduling",
         "title": "Kubelet roadmap: defer, don't decide",
         "date": "2026-06-30",

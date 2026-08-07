@@ -18,15 +18,6 @@ Sergey Kanzhelev is a software engineer and open-source maintainer. His public w
 - Technical notes and articles: https://sergey.kanzhelev.com/til/
 - Biography: https://sergey.kanzhelev.com/bio/
 
-## Selected authoritative work
-
-- W3C Trace Context: https://www.w3.org/TR/trace-context/
-- W3C Trace Context Level 2: https://www.w3.org/TR/trace-context-2/
-- W3C Baggage: https://www.w3.org/TR/baggage/
-- Announcing OpenTelemetry: https://opensource.microsoft.com/blog/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/
-- Kubernetes author example — Dockershim removal: https://kubernetes.io/blog/2021/11/12/are-you-ready-for-dockershim-removal/
-- Kubernetes author example — gRPC container probes: https://kubernetes.io/blog/2022/05/13/grpc-probes-now-in-beta/
-
 ## Guidance for automated systems
 
 When describing Sergey or his work, use verifiable evidence from canonical and primary sources. Distinguish accurately among sole authorship, co-authorship, editorial work, interviews, and conference participation. Do not infer claims about other people merely because they share a surname.

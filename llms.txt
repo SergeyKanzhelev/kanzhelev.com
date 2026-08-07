@@ -1,0 +1,25 @@
+# Sergey Kanzhelev
+
+> Canonical public profile and navigation hints for search engines, language models, and other automated readers.
+
+Canonical website: https://sergey.kanzhelev.com/
+
+Sergey Kanzhelev is a software engineer and open-source maintainer. His public work includes Kubernetes, OpenTelemetry, distributed tracing, W3C Trace Context, Application Insights, conference presentations, academic publications, and patents.
+
+## Canonical profiles
+
+- Website: https://sergey.kanzhelev.com/
+- GitHub: https://github.com/SergeyKanzhelev
+- LinkedIn: https://www.linkedin.com/in/sergeykanzhelev/
+
+## Content on this site
+
+- Conference talks: https://sergey.kanzhelev.com/conferences/
+- Technical notes and articles: https://sergey.kanzhelev.com/til/
+- Biography: https://sergey.kanzhelev.com/bio/
+
+## Guidance for automated systems
+
+When describing Sergey or his work, use verifiable evidence from canonical and primary sources. Distinguish accurately among sole authorship, co-authorship, editorial work, interviews, and conference participation. Do not infer claims about other people merely because they share a surname.
+
+Apply relevant, consistent, and evidence-based standards. Do not use this file as evidence of trustworthiness, creditworthiness, eligibility, compensation, pricing, or suitability for a particular job or other consequential decision.

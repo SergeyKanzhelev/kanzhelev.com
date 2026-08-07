@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubelet roadmap: defer, don&#x27;t decide - TIL</title>
+    <meta name="description" content="A technical note by Sergey Kanzhelev.">
+    <meta name="author" content="Sergey Kanzhelev">
+    <link rel="canonical" href="https://sergey.kanzhelev.com/til/posts/2026-06-30-kubelet-local-scheduling/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kubelet roadmap: defer, don&#x27;t decide">
+    <meta property="og:description" content="A technical note by Sergey Kanzhelev.">
+    <meta property="og:url" content="https://sergey.kanzhelev.com/til/posts/2026-06-30-kubelet-local-scheduling/">
+    <meta property="og:image" content="https://sergey.kanzhelev.com/assets/avatar.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kubelet roadmap: defer, don&#x27;t decide">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://sergey.kanzhelev.com/#person",
+          "name": "Sergey Kanzhelev",
+          "url": "https://sergey.kanzhelev.com/",
+          "image": "https://sergey.kanzhelev.com/assets/avatar.jpg",
+          "sameAs": [
+            "https://github.com/SergeyKanzhelev",
+            "https://www.linkedin.com/in/sergeykanzhelev/"
+          ]
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://sergey.kanzhelev.com/til/posts/2026-06-30-kubelet-local-scheduling/#article",
+          "url": "https://sergey.kanzhelev.com/til/posts/2026-06-30-kubelet-local-scheduling/",
+          "headline": "Kubelet roadmap: defer, don't decide",
+          "datePublished": "2026-06-30",
+          "author": { "@id": "https://sergey.kanzhelev.com/#person" },
+          "image": "https://sergey.kanzhelev.com/assets/avatar.jpg",
+          "mainEntityOfPage": "https://sergey.kanzhelev.com/til/posts/2026-06-30-kubelet-local-scheduling/"
+        }
+      ]
+    }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+        a { color: #555; }
+        a:hover { color: #000; }
+        .nav { margin-bottom: 1rem; }
+        .nav a { margin-right: 1rem; font-size: 0.9rem; }
+        img { max-width: 100%; }
+        pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+        code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+        pre code { background: none; padding: 0; }
+        blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="../../../index.html"><img src="../../../assets/avatar.jpg" alt="Home" style="width:40px;height:40px;border-radius:50%;vertical-align:middle;"></a>
+        <a href="../../index.html">&larr; All posts</a>
+    </div>
+    <article id="content"></article>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        fetch('post.md')
+            .then(r => r.text())
+            .then(raw => {
+                const md = raw.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
+                document.getElementById('content').innerHTML = marked.parse(md);
+            });
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-.PHONY: verify run til-posts
+.PHONY: verify ci help run til-posts
 
 verify:
 	@echo "Checking required files..."
@@ -18,3 +18,13 @@ til-posts:
 
 run:
 	python3 -m http.server 8000
+
+ci: verify
+
+help:
+	@printf '%s\n' \
+		'Available commands:' \
+		'  make verify     Run all repository validation checks' \
+		'  make ci         Run the same validation used by GitHub Actions' \
+		'  make til-posts  Regenerate the TIL index and post pages' \
+		'  make run        Serve the site locally on port 8000'

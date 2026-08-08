@@ -7,6 +7,7 @@
     <meta name="description" content="Copy-ready biographies of Sergey Kanzhelev in multiple lengths for conferences, articles, and profiles.">
     <meta name="author" content="Sergey Kanzhelev">
     <link rel="canonical" href="https://sergey.kanzhelev.com/bio/">
+    <link rel="alternate" type="text/markdown" href="https://sergey.kanzhelev.com/bio/content.md" title="Sergey Kanzhelev biographies">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bio - Sergey Kanzhelev">
     <meta property="og:description" content="Copy-ready biographies of Sergey Kanzhelev in multiple lengths for conferences, articles, and profiles.">
@@ -54,19 +55,8 @@
             margin: 0 auto;
             padding: 2rem 0 4rem;
         }
-        .home-link {
-            display: inline-flex;
-            align-items: center;
-            gap: .65rem;
-            color: #555;
-            text-decoration: none;
-        }
+        .home-link { color: #555; text-decoration: none; }
         .home-link:hover { color: #000; }
-        .home-link img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
         h1 {
             margin: 2rem 0 .25rem;
             font-size: clamp(2rem, 6vw, 3rem);
@@ -77,10 +67,7 @@
             margin: 0 0 2rem;
             color: #666;
         }
-        .bio-list {
-            display: grid;
-            gap: 1rem;
-        }
+        .bio-list { display: grid; gap: 1rem; }
         .bio-card {
             padding: 1.25rem;
             border: 1px solid #ddd;
@@ -95,10 +82,7 @@
             gap: 1rem;
             margin-bottom: .75rem;
         }
-        .card-header h2 {
-            margin: 0;
-            font-size: 1.05rem;
-        }
+        .card-header h2 { margin: 0; font-size: 1.05rem; }
         .count {
             display: block;
             margin-top: .15rem;
@@ -135,151 +119,15 @@
             color: #666;
             font-size: .9rem;
         }
-        .sources h2 {
-            margin: 0 0 .5rem;
-            color: #333;
-            font-size: 1.1rem;
-        }
-        .sources ul {
-            margin: .5rem 0 0;
-            padding-left: 1.25rem;
-        }
+        .sources h2 { margin: 0 0 .5rem; color: #333; font-size: 1.1rem; }
+        .sources ul { margin: .5rem 0 0; padding-left: 1.25rem; }
         @media (max-width: 520px) {
             .card-header { align-items: center; }
         }
     </style>
 </head>
 <body>
-    <main>
-        <a class="home-link" href="../">
-            <img src="../assets/avatar.jpg" alt="">
-            <span>Sergey Kanzhelev</span>
-        </a>
-        <h1>Bio</h1>
-        <p class="intro">Copy a biography that fits the space available. Counts include letters, punctuation, and spaces; they update directly from the displayed text.</p>
-
-        <section class="bio-list" aria-label="Biography versions">
-            <article class="bio-card" data-source="generated" data-max-chars="80">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 80 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a cloud native engineer and open source maintainer.</p>
-            </article>
-
-            <article class="bio-card" data-source="generated" data-max-chars="160">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 160 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a software engineer at Google, chair of Kubernetes SIG Node, and co-founder of OpenTelemetry.</p>
-            </article>
-
-            <article class="bio-card" data-source="generated" data-max-chars="280">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 280 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a software engineer at Google working on Google Kubernetes Engine. He chairs Kubernetes SIG Node, is a Kubernetes approver, and co-founded OpenTelemetry. His work focuses on reliable cloud native infrastructure, observability, and open source communities.</p>
-            </article>
-
-            <article class="bio-card" data-source="generated" data-max-chars="500">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 500 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a software engineer at Google working on Google Kubernetes Engine's node team. He chairs Kubernetes SIG Node and is a Kubernetes approver, contributing to upstream Kubernetes while helping it work well for Google Cloud customers. Sergey is also a co-founder of OpenTelemetry and an editor of W3C distributed tracing standards. He focuses on practical cloud native engineering, usable software, and healthy open source communities.</p>
-            </article>
-
-            <article class="bio-card" data-source="kubecon">
-                <div class="card-header">
-                    <div>
-                        <h2>KubeCon profile — original wording</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a seasoned cloud native maintainer. Sergey a chair of Kubernetes SIG node and one of the approvers. He is a co-founder of OpenTelemetry. He is working on both - engineering aspect of software and its practical application. With the Kubernetes, he is contributing to Kubernetes upstream as well as making sure it is working great for Google Cloud customers. He enjoys software development as much as making it easy to use and building community around it.</p>
-                <p class="source-note">Preserved as published in the <a href="https://kccnceu2025.sched.com/speaker/sergey.kanzhelev">KubeCon + CloudNativeCon Europe 2025 speaker profile</a>.</p>
-            </article>
-
-            <article class="bio-card" data-source="generated" data-max-chars="1000">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 1,000 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a software engineer at Google, where he works on Google Kubernetes Engine's node team. A longtime open source and cloud native maintainer, he chairs Kubernetes SIG Node and serves as a Kubernetes approver. His work connects upstream engineering with production needs, improving node reliability and helping community innovations work well for Google Cloud customers. Sergey co-founded OpenTelemetry and contributes to modern observability and distributed tracing. He is an editor of the W3C Trace Context and Baggage specifications, which help telemetry move consistently across services and platforms. Before joining Google, Sergey was a principal software engineer at Microsoft, working on Application Insights and distributed tracing. He writes and speaks about Kubernetes, OpenTelemetry, observability, and software reliability. Across these projects, he cares about making complex systems practical, software easy to adopt, and open source communities healthy and welcoming.</p>
-            </article>
-
-            <article class="bio-card" data-source="generated" data-max-chars="2000">
-                <div class="card-header">
-                    <div>
-                        <h2>Up to 2,000 characters</h2>
-                        <span class="count" aria-live="polite"></span>
-                    </div>
-                    <button type="button" class="copy-button">Copy</button>
-                </div>
-                <p class="bio-text">Sergey Kanzhelev is a software engineer at Google, where he works on Google Kubernetes Engine's node team. He is a longtime open source and cloud native maintainer whose work spans Kubernetes, observability, distributed tracing, and production reliability. Sergey chairs Kubernetes SIG Node and serves as a Kubernetes approver. In that role, he helps guide the part of Kubernetes responsible for the software and APIs that run workloads on every node, contributes to upstream engineering, and works to make community innovations reliable for Google Cloud customers. Sergey is also a co-founder of OpenTelemetry, the CNCF project that provides vendor-neutral APIs, SDKs, and tools for producing telemetry. His standards work includes serving as an editor of the W3C Trace Context and Baggage specifications, which define interoperable ways to carry tracing and contextual information across service boundaries. Before joining Google, Sergey was a principal software engineer at Microsoft, where his work included Application Insights, observability for .NET applications, and the early development of OpenTelemetry. He has written extensively about cloud native systems and application performance, contributed to technical papers and patents, and spoken at KubeCon and other industry events. Sergey enjoys both the engineering of complex systems and their practical application. He cares about software that is reliable, understandable, and easy to adopt, and about building open source communities that help people collaborate effectively.</p>
-            </article>
-        </section>
-
-        <aside class="sources">
-            <h2>Profile sources</h2>
-            <p>The expanded versions synthesize public profile and project records:</p>
-            <ul>
-                <li><a href="https://kccnceu2025.sched.com/speaker/sergey.kanzhelev">KubeCon + CloudNativeCon Europe 2025</a></li>
-                <li><a href="https://www.linkedin.com/in/sergeykanzhelev/">LinkedIn</a></li>
-                <li><a href="https://kubernetes.io/blog/2024/06/20/sig-node-spotlight-2024/">Kubernetes SIG Node Spotlight</a></li>
-                <li><a href="https://www.w3.org/TR/trace-context/">W3C Trace Context</a> and <a href="https://www.w3.org/TR/baggage/">W3C Baggage</a></li>
-                <li><a href="https://opensource.microsoft.com/blog/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/">Microsoft's OpenTelemetry announcement</a></li>
-            </ul>
-        </aside>
-    </main>
-
-    <script>
-        const normalize = element => element.textContent.trim().replace(/\s+/g, ' ');
-
-        document.querySelectorAll('.bio-card').forEach(card => {
-            const textElement = card.querySelector('.bio-text');
-            const countElement = card.querySelector('.count');
-            const button = card.querySelector('.copy-button');
-            const text = normalize(textElement);
-            const characters = Array.from(text).length;
-            const words = text.split(/\s+/).filter(Boolean).length;
-            countElement.textContent = `${characters} characters · ${words} words`;
-
-            button.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText(text);
-                    button.textContent = 'Copied';
-                    setTimeout(() => { button.textContent = 'Copy'; }, 1500);
-                } catch {
-                    const range = document.createRange();
-                    range.selectNodeContents(textElement);
-                    const selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    const copied = document.execCommand('copy');
-                    button.textContent = copied ? 'Copied' : 'Press Ctrl/Cmd+C';
-                    setTimeout(() => { button.textContent = 'Copy'; }, copied ? 1500 : 4000);
-                }
-            });
-        });
-    </script>
+    <main id="content"></main>
+    <script src="bio.js"></script>
 </body>
 </html>

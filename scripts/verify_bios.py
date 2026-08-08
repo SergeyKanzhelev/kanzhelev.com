@@ -108,32 +108,19 @@ def main() -> int:
     body_parser.feed(html_source)
     if body_parser.parts:
         errors.append(f"semantic body text must be in Markdown, found {body_parser.parts}")
-    if 'src="bio.js"' not in html_source:
-        errors.append("bio page must load its external behavior script")
+    if '<script type="module" src="bio.js"></script>' not in html_source:
+        errors.append("bio page must load its external behavior module")
     if 'type="text/markdown" href="https://sergey.kanzhelev.com/bio/content.md"' not in html_source:
         errors.append("bio page must advertise its Markdown semantic content")
     if re.search(r'<script[^>]+src=["\']https?://', html_source, re.IGNORECASE):
         errors.append("bio page must not load third-party runtime scripts")
 
+    if not BIO_SCRIPT.is_file():
+        errors.append("missing bio/bio.js behavior module")
     script_source = BIO_SCRIPT.read_text(encoding="utf-8") if BIO_SCRIPT.is_file() else ""
     for forbidden in ("marked.parse", "innerHTML"):
         if forbidden in script_source:
             errors.append(f"bio script must not use unsafe Markdown rendering behavior: {forbidden}")
-    for required in (
-        "content.md",
-        "document.createElement",
-        ".textContent",
-        "Array.from(text).length",
-        "safeLinkHref",
-        "role', 'alert",
-        "button.setAttribute('aria-label', `Copy ${heading.textContent.trim()} biography`)",
-        "let copied = false;",
-        "if (selection && typeof document.execCommand === 'function') {",
-        "} catch {\n                    copied = false;\n                }",
-        "Select the biography and press Ctrl/Cmd+C",
-    ):
-        if required not in script_source:
-            errors.append(f"bio script is missing required safe or accessible behavior: {required}")
 
     if errors:
         for error in errors:

@@ -10,8 +10,11 @@ verify:
 	@python3 til/gen-posts-json.py | cmp -s til/posts.json - || (echo "ERROR: til/posts.json is out of date; run make til-posts" && exit 1)
 	@python3 til/gen-post-pages.py --check
 	@python3 scripts/verify_metadata.py
+	@npm ci --ignore-scripts --no-audit --no-fund
 	@python3 scripts/verify_bios.py
 	@node --test scripts/verify_bio_behavior.mjs
+	@python3 scripts/verify_publications.py
+	@node --test scripts/verify_publications_behavior.mjs
 	@echo "All checks passed."
 
 til-posts:

@@ -102,7 +102,7 @@
         .count {
             display: block;
             margin-top: .15rem;
-            color: #777;
+            color: #6f6f6f;
             font-size: .82rem;
         }
         .bio-text { margin: 0; }
@@ -124,7 +124,7 @@
         }
         .source-note {
             margin-top: .8rem;
-            color: #777;
+            color: #6f6f6f;
             font-size: .82rem;
         }
         .source-note a, .sources a { color: #555; }
@@ -259,8 +259,9 @@
             const countElement = card.querySelector('.count');
             const button = card.querySelector('.copy-button');
             const text = normalize(textElement);
+            const characters = Array.from(text).length;
             const words = text.split(/\s+/).filter(Boolean).length;
-            countElement.textContent = `${text.length} characters · ${words} words`;
+            countElement.textContent = `${characters} characters · ${words} words`;
 
             button.addEventListener('click', async () => {
                 try {
@@ -273,8 +274,9 @@
                     const selection = window.getSelection();
                     selection.removeAllRanges();
                     selection.addRange(range);
-                    button.textContent = 'Selected';
-                    setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+                    const copied = document.execCommand('copy');
+                    button.textContent = copied ? 'Copied' : 'Press Ctrl/Cmd+C';
+                    setTimeout(() => { button.textContent = 'Copy'; }, copied ? 1500 : 4000);
                 }
             });
         });

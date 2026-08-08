@@ -60,8 +60,9 @@ def main() -> int:
     limits = [bio.limit for bio in generated]
     if limits != EXPECTED_LIMITS:
         errors.append(f"generated bio limits should be {EXPECTED_LIMITS}, got {limits}")
-    if not any(bio.source == "kubecon" for bio in parser.bios):
-        errors.append("missing the KubeCon source biography")
+    kubecon_bios = [bio for bio in parser.bios if bio.source == "kubecon"]
+    if len(kubecon_bios) != 1:
+        errors.append(f"expected exactly one KubeCon source biography, got {len(kubecon_bios)}")
     for bio in parser.bios:
         text = bio.text
         if not text:
@@ -73,6 +74,9 @@ def main() -> int:
     lengths = [len(bio.text) for bio in parser.bios]
     if lengths != sorted(lengths):
         errors.append(f"bios should be ordered shortest to longest, got {lengths}")
+    source = BIO_PAGE.read_text(encoding="utf-8")
+    if "Array.from(text).length" not in source:
+        errors.append("browser character counts should use Unicode code points")
     if errors:
         for error in errors:
             print(f"ERROR: {error}")

@@ -14,6 +14,8 @@ verify:
 	@python3 scripts/verify_bios.py
 	@node --test scripts/verify_bio_behavior.mjs
 	@node --test scripts/verify_navigation.mjs
+	@node --test scripts/verify_homepage_layout.mjs
+	@node --test scripts/verify_banner_behavior.mjs
 	@echo "All checks passed."
 
 til-posts:

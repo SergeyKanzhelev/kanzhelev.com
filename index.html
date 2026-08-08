@@ -40,6 +40,15 @@
     }
     </script>
     <style>
+        :root {
+            color-scheme: light;
+            --page: #f5f5f7;
+            --surface: #fff;
+            --text: #1d1d1f;
+            --muted: #626269;
+            --hairline: rgba(29, 29, 31, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -47,72 +56,121 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #fafafa;
-            color: #333;
+            padding: 2rem 1rem;
+            background: var(--page);
+            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         .container {
+            width: min(100%, 33rem);
+            padding: clamp(2rem, 7vw, 4rem) clamp(1rem, 4vw, 2rem);
             text-align: center;
-            padding: 2rem;
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
+            display: block;
+            width: clamp(8.75rem, 28vw, 9.75rem);
+            height: clamp(8.75rem, 28vw, 9.75rem);
+            margin: 0 auto;
+            border: 4px solid var(--surface);
             border-radius: 50%;
-            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 1rem 2.5rem rgba(29, 29, 31, 0.12);
         }
 
         h1 {
-            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            font-size: clamp(1.9rem, 5vw, 2.25rem);
             font-weight: 600;
-            margin-bottom: 1rem;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
         }
 
         .contacts {
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 3rem;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
         .contacts a {
-            color: #555;
-            text-decoration: none;
+            min-height: 2.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.65rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            color: #36363a;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            font-weight: 500;
+            line-height: 1;
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
         }
 
         .contacts a:hover {
+            background: var(--surface);
             color: #000;
+            transform: translateY(-1px);
+        }
+
+        .contacts a:focus-visible,
+        .hidden-nav a:focus-visible {
+            outline: 2px solid #0066cc;
+            outline-offset: 3px;
         }
 
         .contacts a .icon {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            margin-right: 4px;
+            width: 1.125rem;
+            height: 1.125rem;
+            display: block;
+            flex: 0 0 auto;
         }
 
         .banner {
-            display: flex;
+            width: min(100%, 22rem);
+            min-height: 5rem;
+            margin: 0 auto;
+            padding: 1rem 1.125rem;
+            display: grid;
+            grid-template-columns: 3rem minmax(0, 1fr);
             align-items: center;
-            justify-content: center;
             gap: 1rem;
-            height: 50px;
+            border: 1px solid var(--hairline);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: 0 0.75rem 2rem rgba(29, 29, 31, 0.06);
         }
 
         .banner-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            --logo-scale: 0.94;
+            width: 3rem;
+            height: 3rem;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
             opacity: 0;
+            transform: scale(var(--logo-scale));
             transition: opacity 0.4s;
+        }
+
+        .banner-avatar[data-logo="google"] {
+            --logo-scale: 1.15;
+        }
+
+        .banner-avatar[data-logo="containerd"] {
+            --logo-scale: 1.32;
         }
 
         .banner-avatar.visible {
@@ -120,17 +178,20 @@
         }
 
         .banner-text {
-            font-size: 1rem;
-            color: #666;
-            min-width: 200px;
+            min-width: 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
             text-align: left;
         }
 
         .hidden-nav {
             display: none;
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--hairline);
         }
 
         .hidden-nav.visible {
@@ -140,19 +201,60 @@
         .hidden-nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
             justify-content: center;
         }
 
         .hidden-nav a {
-            color: #555;
-            text-decoration: none;
+            display: inline-block;
+            padding: 0.5rem 0;
+            color: var(--muted);
             font-size: 0.9rem;
+            text-decoration: none;
             transition: color 0.2s;
         }
 
         .hidden-nav a:hover {
-            color: #000;
+            color: var(--text);
+        }
+
+        @media (max-width: 520px) {
+            body {
+                align-items: flex-start;
+                padding: 1rem 0.75rem;
+            }
+
+            .container {
+                padding: 2rem 0.5rem;
+            }
+
+            .contacts {
+                gap: 0.5rem;
+            }
+
+            .contacts a {
+                padding-inline: 0.8rem;
+            }
+
+            .banner {
+                grid-template-columns: 2.75rem minmax(0, 1fr);
+                gap: 0.875rem;
+                padding: 0.875rem 1rem;
+            }
+
+            .banner-avatar {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contacts a,
+            .banner-avatar,
+            .hidden-nav a {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -162,10 +264,10 @@
         <h1>Sergey Kanzhelev</h1>
         <div class="contacts">
             <a href="https://github.com/SergeyKanzhelev">
-                <img class="icon" src="assets/github.svg" alt="GitHub"> GitHub
+                <img class="icon" src="assets/github.svg" alt="" aria-hidden="true"> GitHub
             </a>
             <a href="https://www.linkedin.com/in/sergeykanzhelev/">
-                <img class="icon" src="assets/linkedin.svg" alt="LinkedIn"> LinkedIn
+                <img class="icon" src="assets/linkedin.svg" alt="" aria-hidden="true"> LinkedIn
             </a>
         </div>
         <div class="banner">
@@ -182,50 +284,7 @@
         </nav>
     </div>
 
-    <script>
-        let items = [];
-        const bannerImg = document.getElementById('bannerImg');
-        const bannerText = document.getElementById('bannerText');
-        let current = 0;
-
-        fetch('banner.json')
-            .then(r => r.json())
-            .then(data => { items = data; showNext(); });
-
-        function typeText(text, callback) {
-            let i = 0;
-            bannerText.textContent = '';
-            function type() {
-                if (i < text.length) {
-                    bannerText.textContent += text[i];
-                    i++;
-                    setTimeout(type, 60);
-                } else if (callback) {
-                    setTimeout(callback, 2000);
-                }
-            }
-            type();
-        }
-
-        function showNext() {
-            const item = items[current];
-            bannerImg.src = item.avatar;
-            bannerImg.alt = item.name;
-            bannerImg.classList.remove('visible');
-
-            // Small delay then show avatar
-            setTimeout(() => {
-                bannerImg.classList.add('visible');
-                typeText(item.text, () => {
-                    bannerImg.classList.remove('visible');
-                    bannerText.textContent = '';
-                    current = (current + 1) % items.length;
-                    setTimeout(showNext, 500);
-                });
-            }, 300);
-        }
-
-    </script>
+    <script type="module" src="assets/banner.js"></script>
     <script type="module" src="assets/navigation.js"></script>
 </body>
 </html>

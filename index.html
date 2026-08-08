@@ -158,7 +158,7 @@
 </head>
 <body>
     <div class="container">
-        <img class="avatar" src="assets/avatar.jpg" alt="Sergey Kanzhelev">
+        <img class="avatar" id="profileAvatar" src="assets/avatar.jpg" alt="Sergey Kanzhelev">
         <h1>Sergey Kanzhelev</h1>
         <div class="contacts">
             <a href="https://github.com/SergeyKanzhelev">
@@ -172,7 +172,7 @@
             <img class="banner-avatar" id="bannerImg" src="" alt="">
             <span class="banner-text" id="bannerText"></span>
         </div>
-        <nav class="hidden-nav" id="hiddenNav">
+        <nav class="hidden-nav" id="hiddenNav" aria-hidden="true">
             <ul>
                 <li><a href="til/">TIL</a></li>
                 <li><a href="notes/">Notes for Self</a></li>
@@ -225,11 +225,7 @@
             }, 300);
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'i') {
-                document.getElementById('hiddenNav').classList.toggle('visible');
-            }
-        });
     </script>
+    <script type="module" src="assets/navigation.js"></script>
 </body>
 </html>

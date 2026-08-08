@@ -12,6 +12,7 @@ verify:
 	@python3 scripts/verify_metadata.py
 	@python3 scripts/verify_bios.py
 	@node --test scripts/verify_bio_behavior.mjs
+	@node --test scripts/verify_navigation.mjs
 	@echo "All checks passed."
 
 til-posts:

@@ -112,6 +112,17 @@
             font-size: .82rem;
         }
         .source-note a, .sources a { color: #555; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
         .sources {
             margin-top: 2.5rem;
             padding-top: 1.5rem;
@@ -128,6 +139,6 @@
 </head>
 <body>
     <main id="content"></main>
-    <script src="bio.js"></script>
+    <script type="module" src="bio.js"></script>
 </body>
 </html>

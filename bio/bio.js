@@ -1,7 +1,6 @@
-const content = document.getElementById('content');
 const normalize = element => element.textContent.trim().replace(/\s+/g, ' ');
 
-function safeLinkHref(href) {
+export function safeLinkHref(href) {
     const value = href.trim();
     if (!value || /[\u0000-\u001f\u007f]/.test(value) || value.startsWith('//') || value.startsWith('\\')) {
         return null;
@@ -10,7 +9,14 @@ function safeLinkHref(href) {
     return /^[a-z][a-z\d+.-]*:/i.test(value) ? null : value;
 }
 
-function appendInlineMarkdown(element, markdown) {
+export function biographyStats(text) {
+    return {
+        characters: Array.from(text).length,
+        words: text.split(/\s+/).filter(Boolean).length,
+    };
+}
+
+export function appendInlineMarkdown(element, markdown) {
     const linkPattern = /\[([^\]]+)\]\(([^)\s]+)\)/g;
     let position = 0;
     for (const match of markdown.matchAll(linkPattern)) {
@@ -29,7 +35,7 @@ function appendInlineMarkdown(element, markdown) {
     element.append(document.createTextNode(markdown.slice(position)));
 }
 
-function renderMarkdown(markdown) {
+export function renderMarkdown(markdown, target) {
     const fragment = document.createDocumentFragment();
     let paragraphLines = [];
     let list = null;
@@ -70,19 +76,76 @@ function renderMarkdown(markdown) {
         }
     });
     flushParagraph();
-    content.replaceChildren(fragment);
+    target.replaceChildren(fragment);
 }
 
-function showLoadError() {
+export function showLoadError(target) {
     const error = document.createElement('p');
     error.setAttribute('role', 'alert');
     error.className = 'load-error';
     error.textContent = 'Biography content could not be loaded. Please refresh the page to try again.';
-    content.replaceChildren(error);
+    target.replaceChildren(error);
 }
 
-function enhanceBiographySections() {
-    const headings = Array.from(content.querySelectorAll('h2'));
+export function setBiographyCount(text, countElement) {
+    const { characters, words } = biographyStats(text);
+    countElement.setAttribute('aria-live', 'polite');
+    countElement.textContent = `${characters} characters · ${words} words`;
+}
+
+export async function copyBiography({
+    text,
+    textElement,
+    button,
+    status,
+    clipboard = globalThis.navigator?.clipboard,
+    documentRef = globalThis.document,
+    windowRef = globalThis.window,
+    schedule = globalThis.setTimeout,
+}) {
+    const idleText = button.dataset.idleText || button.textContent;
+    button.dataset.idleText = idleText;
+    const showFeedback = (visibleText, announcement, delay) => {
+        button.textContent = visibleText;
+        status.textContent = announcement;
+        schedule(() => {
+            button.textContent = idleText;
+            status.textContent = '';
+        }, delay);
+    };
+
+    try {
+        if (!clipboard?.writeText) throw new Error('Clipboard API unavailable');
+        await clipboard.writeText(text);
+        showFeedback('Copied', 'Biography copied.', 1500);
+        return true;
+    } catch {
+        const range = documentRef.createRange();
+        range.selectNodeContents(textElement);
+        const selection = windowRef.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        let copied = false;
+        try {
+            copied = documentRef.execCommand('copy');
+        } catch {
+            copied = false;
+        }
+        if (copied) {
+            showFeedback('Copied', 'Biography copied.', 1500);
+        } else {
+            showFeedback(
+                'Press Ctrl/Cmd+C',
+                'Biography selected. Press Control or Command plus C to copy.',
+                4000,
+            );
+        }
+        return copied;
+    }
+}
+
+export function enhanceBiographySections(target) {
+    const headings = Array.from(target.querySelectorAll('h2'));
     const bioHeadings = headings.filter(heading =>
         /^Up to [\d,]+ characters$/.test(heading.textContent.trim()) ||
         heading.textContent.trim() === 'KubeCon profile — original wording'
@@ -113,7 +176,6 @@ function enhanceBiographySections() {
             const headingGroup = document.createElement('div');
             const count = document.createElement('span');
             count.className = 'count';
-            count.setAttribute('aria-live', 'polite');
             headingGroup.append(heading, count);
             header.append(headingGroup);
 
@@ -127,7 +189,11 @@ function enhanceBiographySections() {
                 button.className = 'copy-button';
                 button.textContent = link.textContent;
                 button.setAttribute('aria-label', `Copy ${heading.textContent.trim()} biography`);
-                header.append(button);
+                const status = document.createElement('span');
+                status.className = 'visually-hidden copy-status';
+                status.setAttribute('aria-live', 'polite');
+                status.setAttribute('aria-atomic', 'true');
+                header.append(button, status);
                 copyLink.remove();
             }
             article.append(header);
@@ -153,60 +219,56 @@ function enhanceBiographySections() {
         }
     }
 
-    const homeParagraph = content.querySelector(':scope > p:first-child');
+    const homeParagraph = target.querySelector(':scope > p:first-child');
     const homeLink = homeParagraph?.querySelector(':scope > a[href="../"]');
     if (homeLink) {
         homeLink.className = 'home-link';
         homeParagraph.replaceWith(homeLink);
     }
-    const intro = content.querySelector(':scope > h1 + p');
+    const intro = target.querySelector(':scope > h1 + p');
     if (intro) intro.className = 'intro';
 
-    document.querySelectorAll('.bio-card').forEach(card => {
+    target.querySelectorAll('.bio-card').forEach(card => {
         const textElement = card.querySelector('.bio-text');
         const countElement = card.querySelector('.count');
         const button = card.querySelector('.copy-button');
+        const status = card.querySelector('.copy-status');
+        if (!textElement || !countElement || !button || !status) return;
         const text = normalize(textElement);
-        const characters = Array.from(text).length;
-        const words = text.split(/\s+/).filter(Boolean).length;
-        countElement.textContent = `${characters} characters · ${words} words`;
-
-        button.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(text);
-                button.textContent = 'Copied';
-                setTimeout(() => { button.textContent = 'Copy'; }, 1500);
-            } catch {
-                let copied = false;
-                try {
-                    const selection = window.getSelection();
-                    if (selection && typeof document.execCommand === 'function') {
-                        const range = document.createRange();
-                        range.selectNodeContents(textElement);
-                        selection.removeAllRanges();
-                        selection.addRange(range);
-                        copied = document.execCommand('copy');
-                    }
-                } catch {
-                    copied = false;
-                }
-                button.textContent = copied ? 'Copied' : 'Select the biography and press Ctrl/Cmd+C';
-                setTimeout(() => { button.textContent = 'Copy'; }, copied ? 1500 : 4000);
-            }
-        });
+        setBiographyCount(text, countElement);
+        button.addEventListener('click', () => copyBiography({
+            text,
+            textElement,
+            button,
+            status,
+        }));
     });
 }
 
-fetch('content.md')
-    .then(response => {
+export async function loadBiographyPage({
+    target,
+    fetchImpl = globalThis.fetch,
+    render = renderMarkdown,
+    enhance = enhanceBiographySections,
+    showError = showLoadError,
+}) {
+    target.setAttribute('aria-busy', 'true');
+    try {
+        const response = await fetchImpl('content.md');
         if (!response.ok) throw new Error(`Unable to load biography content (${response.status})`);
-        return response.text();
-    })
-    .then(markdown => {
-        renderMarkdown(markdown);
-        enhanceBiographySections();
-    })
-    .catch(error => {
+        render(await response.text(), target);
+        enhance(target);
+        return true;
+    } catch (error) {
         console.error(error);
-        showLoadError();
-    });
+        showError(target);
+        return false;
+    } finally {
+        target.removeAttribute('aria-busy');
+    }
+}
+
+if (typeof document !== 'undefined') {
+    const content = document.getElementById('content');
+    if (content) loadBiographyPage({ target: content });
+}

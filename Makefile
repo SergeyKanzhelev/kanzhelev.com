@@ -11,6 +11,7 @@ verify:
 	@python3 til/gen-post-pages.py --check
 	@python3 scripts/verify_metadata.py
 	@python3 scripts/verify_bios.py
+	@node --test scripts/verify_bio_behavior.mjs
 	@echo "All checks passed."
 
 til-posts:

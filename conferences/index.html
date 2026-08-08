@@ -99,6 +99,7 @@
 
                     let links = [];
                     if (talk.youtubeUrl) links.push(`<a href="${talk.youtubeUrl}">YouTube</a>`);
+                    if (talk.recordingUrl) links.push(`<a href="${talk.recordingUrl}">Recording</a>`);
                     if (talk.presentationUrl) links.push(`<a href="${talk.presentationUrl}">Slides</a>`);
                     if (talk.agendaDocUrl) links.push(`<a href="${talk.agendaDocUrl}">Agenda</a>`);
                     if (talk.presentationDocUrl) links.push(`<a href="${talk.presentationDocUrl}">Presentation Doc</a>`);
@@ -109,8 +110,8 @@
 
                     div.innerHTML = `
                         <div class="talk-title">${talk.title}</div>
-                        <div class="talk-conference">${talk.date} &middot; ${conferenceLink}</div>
-                        <div class="talk-presenters">${talk.presenters.join(', ')}</div>
+                        <div class="talk-conference">${talk.dateDisplay || talk.date} &middot; ${conferenceLink}</div>
+                        <div class="talk-presenters">${talk.role || talk.presenters.join(', ')}</div>
                         ${links.length ? `<div class="talk-links">${links.join('')}</div>` : ''}
                     `;
                     container.appendChild(div);

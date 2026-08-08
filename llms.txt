@@ -15,6 +15,7 @@ Sergey Kanzhelev is a software engineer and open-source maintainer. His public w
 ## Content on this site
 
 - Conference talks: https://sergey.kanzhelev.com/conferences/
+- Publications: https://sergey.kanzhelev.com/publications/
 - Technical notes and articles: https://sergey.kanzhelev.com/til/
 - Biography: https://sergey.kanzhelev.com/bio/
 
